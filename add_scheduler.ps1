@@ -4,7 +4,7 @@ if ($(Get-ScheduledTask -TaskName "Monster Hunter Save" -ErrorAction SilentlyCon
     Unregister-ScheduledTask -TaskName "Monster Hunter Save" -Confirm:$False
 }
 $user = "$env:USERDOMAIN\$env:USERNAME"
-$Trigger =  New-ScheduledTaskTrigger -Daily -At "12:59pm"
+$Trigger =  New-ScheduledTaskTrigger -Daily -At "12:00pm"
 $scriptPath = '"C:\\Users\Brian Ho\\Downloads\\mh_save\\save.ps1"'
 $Principal = New-ScheduledTaskPrincipal -UserID "$env:USERDOMAIN\$env:USERNAME" -LogonType S4U -RunLevel Highest
 $action = New-ScheduledTaskAction -Execute "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -Argument "-NoProfile -executionpolicy bypass -file $scriptPath -force"
